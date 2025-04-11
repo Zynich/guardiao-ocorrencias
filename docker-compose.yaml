@@ -1,11 +1,19 @@
 services:
   nuxt:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile  # Dockerfile está na raiz do projeto
     container_name: nuxt_guardiao
     ports:
-      - "3000:3000"
+      - "3002:3000"  # Acesso externo na 3002, Nuxt roda na 3000 internamente
     volumes:
-      - ./app:/app
-      - /app/node_modules
+      - ./app:/app   # Sincroniza os arquivos da pasta app com /app no container
+      - /app/node_modules  # Impede sobrescrever o node_modules do container
+    working_dir: /app  # Define diretório de trabalho como /app
     stdin_open: true
     tty: true
+
+networks:
+  default:
+    name: guardiao-net
+    external: true

@@ -6,6 +6,10 @@
 
 echo "🚀 Iniciando setup do projeto Nuxt..."
 
+# 0. Criar rede Docker compartilhada
+echo "🌐 Verificando rede Docker 'guardiao-net'..."
+docker network inspect guardiao-net >/dev/null 2>&1 || docker network create guardiao-net
+
 # Verifica se o Docker está instalado
 if ! [ -x "$(command -v docker)" ]; then
   echo "❌ Docker não está instalado. Por favor, instale o Docker primeiro." >&2
