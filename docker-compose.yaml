@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile  # Dockerfile está na raiz do projeto
-    container_name: nuxt_guardiao
+    container_name: guardiao-ocorrencias
     ports:
       - "3002:3000"  # Acesso externo na 3002, Nuxt roda na 3000 internamente
     volumes:
